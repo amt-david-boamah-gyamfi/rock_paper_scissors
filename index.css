@@ -1,0 +1,386 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(50% 0%, #1F3757 0%, #131537 100%);
+    color: white;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+/*******************************container**************************/
+
+.container_1 {
+    margin: 15% 7% 0% 7%;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+}
+
+.headings {
+    margin-left: 7%;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 3px;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.score_board {
+    border: 1px solid white;
+    /* line-height: ; */
+    text-align: center;
+    margin-right: 3%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px 20px;
+
+}
+
+.score {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 12px;
+    letter-spacing: 1.5625px;
+    text-align: center;
+    color: #2A45C2;
+
+}
+
+.num {
+    font-size: 40px;
+    color: #565468;
+    letter-spacing: 5px;
+}
+
+
+/******************************************************************************/
+
+
+/***************************container 2***************************************/
+
+.container_2 {
+    /* border: 1px solid white; */
+    /* background-color: white; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 150px 5% 0% 5%;
+    row-gap: 150px;
+    /* column-gap: 100px; */
+    position: relative;
+    /* bottom: 320px; */
+}
+
+
+.container_2::before {
+    background-image: url('./images/bg-triangle.svg');
+    background-size: cover;
+    content: '';
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}
+
+.btn {
+    border-radius: 50%;
+    width: 130px;
+    height: 133px;
+    cursor: pointer;
+    box-shadow: inset 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+.btn-paper {
+    border: 15px solid hsl(230, 89%, 65%);
+
+}
+
+.btn-scissors {
+    border: 15px solid hsl(39, 89%, 49%);
+    grid-column: 3 / 4;
+    justify-self: end;
+}
+
+.btn-rock {
+    border: 15px solid hsl(349, 71%, 52%);
+    grid-row: 2 /3;
+    grid-column: 1 / span 3;
+    justify-self: center;
+}
+
+/*********************************************************************/
+.container_3 {
+    margin: 150px 5% 0% 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 62px;
+
+    display: none;
+}
+
+.first,
+.second p {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 1.875px;
+    text-align: center;
+
+}
+
+.second {
+    grid-column: 3 / 4;
+}
+
+.decision {
+    grid-column: span 3;
+    /* border: 1px solid white; */
+    justify-self: center;
+    text-align: center;
+}
+
+.decision h1 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.decision button {
+    padding: 20px 70px;
+    margin-top: 16px;
+    border-radius: 10px;
+    border-style: none;
+    color: #3B4262;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+}
+
+.open_rules {
+    margin-top: 63px;
+    text-align: center;
+    margin-bottom: 63px;
+}
+
+.rules {
+    cursor: pointer;
+    background-color: transparent;
+    border: .1px solid white;
+    color: white;
+    border-radius: 5px;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    font-size: 16px;
+    letter-spacing: 2.5px;
+}
+
+.games_rules {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+
+    display: none;
+}
+
+.games_rules button {
+    border: none;
+    background-color: transparent;
+    margin-top: 150px;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+@media (min-width: 481px) {
+    .container_1 {
+        margin: 45px 20% 0% 20%;
+        border: 1px solid #F2F2F2;
+        border-radius: 7px;
+        height: 150px;
+        /* text-align: center; */
+    }
+
+    h1 {
+        font-size: 35px;
+        line-height: 3px;
+    }
+
+    .score_board {
+
+        border-radius: 5px;
+        padding: 13px 38px;
+
+    }
+
+    .score {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 15px;
+        letter-spacing: 1.625px;
+    }
+
+    .num {
+        font-size: 64px;
+        letter-spacing: 8px;
+    }
+
+
+
+    .container_2 {
+
+        width: minmax(480, 1fr);
+
+        margin: 70px 25%;
+        row-gap: 90px;
+
+
+
+    }
+
+
+    .container_2::before {
+        background-size: contain;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 4%;
+        transform: scale(0.8);
+        right: 20%;
+        left: 15%;
+    }
+
+
+
+
+    .btn-paper {
+
+        justify-self: end;
+        align-self: end;
+
+    }
+
+    .btn-scissors {
+
+        grid-column: 3 / 4;
+        justify-self: start;
+    }
+
+    .btn-rock {
+
+        justify-self: center;
+    }
+
+
+
+.first {
+    justify-self: start;
+}
+
+
+    
+    .second {
+        grid-column: 3 / 4;
+        justify-self: end;
+    }
+    
+    .decision {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        align-items: center;
+        /* border: 1px solid white; */
+        justify-self: center;
+        text-align: center;
+    }
+    
+    
+
+
+
+
+    .container_3 {
+        margin: 150px 15% 0% 15%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 62px;
+
+        display: none;
+    }
+
+    .btn {
+        width: 190px;
+        height: 193px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    .open_rules {
+        margin-right: 5%;
+        text-align: right;
+        margin-bottom: 50px;
+    }
+
+    .rules:hover {
+        background-color: #ffffff;
+        color: #131537;
+        font-weight: 400;
+    }
+    
+    .games_rules {
+
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 20%;
+        left: 25%;
+        right: 25%;
+        bottom: 100%;
+        width: 50%;
+        height: 70%;
+        z-index: 100;
+    
+        display: none;
+    }
+    
+    .games_rules button {
+        border: none;
+        background-color: transparent;
+        margin-top: 150px;
+        transform: scale(1);
+        cursor: pointer;
+    }
+
+    
+
+}
