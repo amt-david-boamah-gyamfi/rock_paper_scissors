@@ -1,10 +1,10 @@
-//displaying and hiding of rules
+//display and hiding of rules
 const rules = document.querySelector('.rules');
 const gameRules = document.querySelector('.games_rules');
 const rulesImage = document.querySelector('.rules_image');
 
 rules.addEventListener('click', () => {
-    gameRules.style.display = 'flex'
+    gameRules.style.display = 'grid'
 });
 
 rulesImage.addEventListener('click', () => {
@@ -12,19 +12,22 @@ rulesImage.addEventListener('click', () => {
 })
 
 
-//selecting of user's options
-const userButtons = document.querySelectorAll('.users_button');
-let usersChoice;
+//selecting of user's option
+const userButtons = document.querySelectorAll('.click');
+let userDecision;
 userButtons.forEach(button => {
     button.addEventListener('click', () => {
-        usersChoice = button.getAttribute('users-option');
+        userDecision = button.getAttribute('data-choice');
 
-        //will delete later
-        console.log(usersChoice);
+
+
+        // console.log(userDecision);
         computersOption();
-        console.log(computerDecision);
+        // console.log(computerDecision);
+
+
+
         checkWinner();
-        console.log(scoreOutcome);
     })
 })
 
@@ -35,62 +38,34 @@ const computersOption = () => {
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     switch (randomNumber) {
         case 1:
-            computerDecision = 'Paper';
+            computerDecision = 'paper';
             break;
 
         case 2:
-            computerDecision = 'Scissors';
+            computerDecision = 'scissors';
             break;
 
         case 3:
-            computerDecision = 'Rock';
+            computerDecision = 'rock';
             break;
     }
 }
 
 
-//checking the winner
-let scoreOutcome;
-const checkWinner = () => {
-    if (usersChoice === computerDecision) {
-        scoreOutcome = 'TIE';
-        updateScore(0);
-        changeSpan.textContent = `DRAW`
-    } else if (usersChoice === 'Paper' && computerDecision === 'Rock' || usersChoice === 'Scissors' && computerDecision === 'Paper' || usersChoice === 'Rock' && computerDecision === 'Scissors') {
-        scoreOutcome = 'YOU WON';
-        updateScore(1);
-        changeSpan.textContent = `WON`
-    } else {
-        scoreOutcome = 'YOU LOST';
-        updateScore(-1);
-        changeSpan.textContent = `LOST`
-    }
-
-    //updating the view
-    updateSelection(user_select, usersChoice);
-    updateSelection(computer_select, computerDecision);
-
-    container_2.style.display = 'none'
-    container_3.style.display = 'grid'
-
-}
+let switchSpan = document.querySelector('.you');
+let grid = document.querySelector('.grid');
+let triangle = document.querySelector('.triangle');
+let playAgain = document.querySelector('.play_again');
 
 
-
-//disappearing and appearing of container_2 and container_3
-const container_2 = document.querySelector('.container_2');
-const container_3 = document.querySelector('.container_3');
-
-const play_again = document.getElementById('play_again');
-
-play_again.addEventListener('click', () => {
-    container_2.style.display = 'grid';
-    container_3.style.display = 'none'
-}
-)
+//reset default
+playAgain.addEventListener('click', () => {
+    triangle.style.display = 'grid'
+    grid.style.display = 'none';
+})
 
 
-//updating of Score
+//updating scores
 let scoreElement = document.querySelector('.num');
 
 function updateScore(score) {
@@ -118,29 +93,48 @@ window.onload = function () {
 }
 
 
-//updating of the image when user makes a choice
-const updateSelection = (selectionElement, choice) => {
-    selectionElement.classList.remove('btn-paper');
-    selectionElement.classList.remove('btn-scissors');
-    selectionElement.classList.remove('btn-rock');
 
-    //Updating of the images
-    // const img = selectionElement.querySelector('img');
-    // selectionElement.classList.add(`btn-${choice}`);
-    // img.src = `./images/icon-${choice}.svg`;
-    // img.alt = choice;
+//checking the winner
+const checkWinner = () => {
+    if (userDecision === computerDecision) {
+        //Draw
+        switchSpan.textContent = 'YOU DRAW';
+        updateScore(0);
+    } else if (userDecision === 'paper' && computerDecision === 'rock' || userDecision === 'scissors' && computerDecision === 'paper' || userDecision === 'rock' && computerDecision === 'scissors') {
+        //win
+        switchSpan.textContent = 'YOU WIN';
+        updateScore(1);
+    } else {
+        //lost
+        switchSpan.textContent = 'YOU LOSE';
+        updateScore(-1);
+    }
 
-    const img = selectionElement.querySelector('img');
-    selectionElement.classList.add(`btn-${choice}`);
+
+
+    triangle.style.display = 'none'
+    grid.style.display = 'grid';
+
+    updateSelection(userSelect, userDecision);
+    updateSelection(computerSelect, computerDecision);
+}
+
+// console.log(checkWinner());
+
+function updateSelection(selectionEl, choice) {
+    //class reset
+    selectionEl.classList.remove('btn-paper');
+    selectionEl.classList.remove('btn-scissors');
+    selectionEl.classList.remove('btn-rock');
+
+    //update the img
+    const img = selectionEl.querySelector('img');
+    selectionEl.classList.add(`btn-${choice}`);
     img.src = `./images/icon-${choice}.svg`;
     img.alt = choice;
 }
 
-const user_select = document.getElementById('user_select');
-const computer_select = document.getElementById('computer_select');
-
-//Indicating whether you won, lost ,drew
-const changeSpan = document.querySelector('.change');
-
+const userSelect = document.getElementById('user_select');
+const computerSelect = document.getElementById('computer_select');
 
 
